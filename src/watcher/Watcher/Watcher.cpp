@@ -62,12 +62,12 @@ void Watcher::Start()
 
     _watcherWorker = std::make_unique<WatcherWorker>(_dirWatch);
 
-    LOG_INFO("wather", "Watcher config:");
-    LOG_INFO("wather", "- Watch dir: {}", _dirWatch);
-    LOG_INFO("wather", "- Max file size: {}{}", _maxFileSize, _maxFileSize > 0 ? "" : " - unlimited");
-    LOG_INFO("wather", "- Word find: {}", _findWord);
-    LOG_INFO("wather", "- Dir to copy secrets: {}", _dirToCopySecrets);
-    LOG_INFO("wather", "");
+    LOG_INFO("watcher", "Watcher config:");
+    LOG_INFO("watcher", "- Watch dir: {}", _dirWatch);
+    LOG_INFO("watcher", "- Max file size: {}{}", _maxFileSize, _maxFileSize > 0 ? "" : " - unlimited");
+    LOG_INFO("watcher", "- Word find: {}", _findWord);
+    LOG_INFO("watcher", "- Dir to copy secrets: {}", _dirToCopySecrets);
+    LOG_INFO("watcher", "");
 }
 
 void Watcher::Stop()
