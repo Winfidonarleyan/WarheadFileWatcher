@@ -28,7 +28,7 @@ cd ../../wfw
 
 A new folder should appear next to the repository `wfw`
 
-## Create config file (optional)
+## Create config file
 1. Move to `.../wfw`
 2. Copy dist config
 * Location in github - **[WarheadFileWatcher.conf.dist](https://github.com/Winfidonarleyan/WarheadFileWatcher/blob/master/src/app/WarheadFileWatcher.conf.dist)**
@@ -36,6 +36,6 @@ A new folder should appear next to the repository `wfw`
 3. Replace file name to `WarheadFileWatcher.conf`
 4. Change options if need
 
-## Run server
+## Run app
 1. Move to `.../wfw/bin`
 2. `./WarheadFileWatcher`
