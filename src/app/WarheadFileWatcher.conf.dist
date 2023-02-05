@@ -1,0 +1,192 @@
+###################################################################################################
+# SECTION INDEX
+#
+#    EXAMPLE CONFIG
+#    WATCHER SETTINGS
+#    LOGGING SYSTEM SETTINGS
+#
+###################################################################################################
+
+###################################################################################################
+# EXAMPLE CONFIG
+#
+#    Variable
+#        Description: Brief description what the variable is doing.
+#        Important:   Annotation for important things about this variable.
+#        Example:     "Example, i.e. if the value is a string"
+#        Default:     10 - (Enabled|Comment|Variable name in case of grouped config options)
+#                     0  - (Disabled|Comment|Variable name in case of grouped config options)
+#
+# Note to developers:
+# - Copy this example to keep the formatting.
+# - Line breaks should be at column 100.
+###################################################################################################
+
+###################################################################################################
+# SERVER SETTINGS
+#
+#    LogsDir
+#        Description: Logs directory setting.
+#        Important:   LogsDir needs to be quoted, as the string might contain space characters.
+#                     Logs directory must exists, or log file creation will be disabled.
+#        Example:     "/home/.../logs"
+#        Default:     "" - (Log files will be stored in the current path)
+#
+
+LogsDir = ""
+
+#
+#    Watcher.WatchDir
+#        Description: Path to directory watch
+#        Default:     "" - Current path
+#
+
+Watcher.WatchDir = ""
+
+#
+#    Watcher.FindWord
+#        Description: Word to find
+#        Default:     "TOPSECRET"
+#
+
+Watcher.FindWord = "TOPSECRET"
+
+#
+#    Watcher.FindWord
+#        Description: Path for files where the word is found (Cannot be equal to Watcher.WatchDir)
+#        Default:     "secrets"
+#
+
+Watcher.CopyPath = "secrets"
+
+#
+#    Finder.Files.MaxSize
+#        Description: Maximum file size at which finder will do its work
+#        Default:     1073741824 - 1 GB
+#                     0 - unlimited
+#
+
+Watcher.Files.MaxSize = 1073741824
+###################################################################################################
+
+###################################################################################################
+#
+#  LOGGING SYSTEM SETTINGS
+#
+#  Log channel config values: Given an channel "name"
+#    Log.Channel.name
+#        Description: Defines 'where to log'
+#        Format:      Type,LogLevel,Pattern,Optional1,Optional2,Optional3,Optional4
+#
+#                     Type
+#                       1 - (Console)
+#                       2 - (File)
+#
+#                     LogLevel
+#                         0 - (Disabled)
+#                         1 - (Fatal)
+#                         2 - (Critical)
+#                         3 - (Error)
+#                         4 - (Warning)
+#                         5 - (Info)
+#                         6 - (Debug)
+#                         7 - (Trace)
+#
+#                    Pattern (all type)
+#                         * %s - message source
+#                         * %t - message text
+#                         * %l - message priority level (1 .. 7)
+#                         * %p - message priority (Fatal, Critical, Error, Warning, Information, Debug, Trace)
+#                         * %q - abbreviated message priority (F, C, E, W, I, D, T)
+#                         * %U - message source file path (empty string if not set)
+#                         * %O - message source file filename (empty string if not set)
+#                         * %u - message source line number (0 if not set)
+#                         * %w - message date/time abbreviated weekday (Mon, Tue, ...)
+#                         * %W - message date/time full weekday (Monday, Tuesday, ...)
+#                         * %b - message date/time abbreviated month (Jan, Feb, ...)
+#                         * %B - message date/time full month (January, February, ...)
+#                         * %d - message date/time zero-padded day of month (01 .. 31)
+#                         * %m - message date/time zero-padded month (01 .. 12)
+#                         * %n - message date/time month (1 .. 12)
+#                         * %y - message date/time year without century (70)
+#                         * %Y - message date/time year with century (1970)
+#                         * %H - message date/time hour (00 .. 23)
+#                         * %h - message date/time hour (00 .. 12)
+#                         * %A - message date/time AM/PM
+#                         * %M - message date/time minute (00 .. 59)
+#                         * %S - message date/time second (00 .. 59)
+#                         * %E - epoch time (UTC, seconds since midnight, January 1, 1970)
+#                         * %v[width] - the message source (%s) but text length is padded/cropped to 'width'
+#                         * %% - percent sign
+#                           Example for file "%Y-%m-%d %H:%M:%S %t"
+#                           Example for console "%H:%M:%S %t"
+#
+#                    Optional1 - Colors (is type Console)
+#                       Format: "fatal critical error warning info debug trace"
+#                       black
+#                       red
+#                       green
+#                       brown
+#                       blue
+#                       magenta
+#                       cyan
+#                       gray
+#                       darkGray
+#                       lightRed
+#                       lightGreen
+#                       yellow
+#                       lightBlue
+#                       lightMagenta
+#                       lightCyan
+#                       white
+#                         Example: "lightRed lightRed red brown cyan lightMagenta green"
+#
+#                     Optional1 - File name (is type file)
+#                       Example: "Watcher.log"
+#
+#                     Optional2 - Mode to open the file (is type file)
+#                          true - Append (default)
+#                          false - Overwrite
+#
+#                     Optional3 - Flush (is type File)
+#                       true: Every messages is immediately flushed to the log file (default).
+#                       false: Messages are not immediately flushed to the log file.
+#
+#                     Optional4 - Add timestamp (is type File).
+#                           true: Append timestamp to the log file name. Format: YYYY-MM-DD_HH-MM-SS
+#                           false: Just using filename (default)
+#
+#                     Optional5 - Max files count (is type File). Need option 4
+#                           Default: 20
+#
+#                     Optional6 - Purge age in days (is type File). Need option 4
+#                           Default: 10
+#
+
+LogChannel.Console = "1","6","[%H:%M:%S] %t","lightRed lightRed red brown cyan lightMagenta green"
+LogChannel.Watcher = "2","6","[%Y-%m-%d %H:%M:%S] %t","Watcher.log"
+LogChannel.Finder = "2","5","[%Y-%m-%d %H:%M:%S] %t","Finder.log"
+
+#
+#  Logger config values: Given a logger "name"
+#    Logger.name
+#        Description: Defines 'What to log'
+#        Format:      LogLevel,ChannelList
+#
+#                     LogLevel
+#                         0 - (Disabled)
+#                         1 - (Fatal)
+#                         2 - (Critical)
+#                         3 - (Error)
+#                         4 - (Warning)
+#                         5 - (Info)
+#                         6 - (Debug)
+#                         7 - (Trace)
+#
+#                     File channel: file channel linked to logger
+#                     (Using spaces as separator).
+#
+
+Logger.root = 6,Console Watcher
+Logger.watcher.finder = 5,Console Finder
+###################################################################################################

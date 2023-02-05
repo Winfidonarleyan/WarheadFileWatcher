@@ -1,0 +1,48 @@
+/*
+ * This file is part of the WarheadCore Project. See AUTHORS file for Copyright information
+ *
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Affero General Public License as published by the
+ * Free Software Foundation; either version 3 of the License, or (at your
+ * option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for
+ * more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#ifndef WARHEAD_ASYNC_QUEUE_WORKER_H_
+#define WARHEAD_ASYNC_QUEUE_WORKER_H_
+
+#include "Define.h"
+#include <atomic>
+#include <thread>
+
+template <typename T>
+class ProducerConsumerQueue;
+
+class AsyncWatcherOperation;
+
+class WH_WATCHER_API AsyncQueueWorker
+{
+public:
+    explicit AsyncQueueWorker(ProducerConsumerQueue<AsyncWatcherOperation*>* queue);
+    ~AsyncQueueWorker();
+
+private:
+    void RunThread();
+
+    ProducerConsumerQueue<AsyncWatcherOperation*>* _queue;
+
+    std::thread _thread;
+    std::atomic<bool> _cancel{ false };
+
+    AsyncQueueWorker(AsyncQueueWorker const& right) = delete;
+    AsyncQueueWorker& operator=(AsyncQueueWorker const& right) = delete;
+};
+
+#endif
