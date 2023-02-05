@@ -34,7 +34,7 @@ void TerminateHandler(int sigval);
 void WatcherUpdateLoop();
 
 /// Launch the server
-int main(int argc, char** argv)
+int main()
 {
     signal(SIGTERM, &TerminateHandler);
     signal(SIGABRT, &Warhead::AbortHandler);
