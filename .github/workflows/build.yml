@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Configure OS
         run: |
-          sudo apt-get install -y libboost-all-dev clang-14
+          sudo apt-get install -y clang-14
       - name: Cmake configure
         run: |
           mkdir build
