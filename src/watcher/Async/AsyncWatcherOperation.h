@@ -25,8 +25,8 @@
 class WH_WATCHER_API AsyncWatcherOperation
 {
 public:
-    explicit AsyncWatcherOperation(std::string_view filePath, std::size_t maxFileSize) :
-        _filePath(filePath), _maxFileSize(maxFileSize) { }
+    explicit AsyncWatcherOperation(std::string_view filePath) :
+        _filePath(filePath) { }
 
     virtual ~AsyncWatcherOperation() = default;
 
@@ -34,7 +34,6 @@ public:
 
 private:
     std::string _filePath;
-    std::size_t _maxFileSize{};
 
     AsyncWatcherOperation(AsyncWatcherOperation const& right) = delete;
     AsyncWatcherOperation& operator=(AsyncWatcherOperation const& right) = delete;

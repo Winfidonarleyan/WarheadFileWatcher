@@ -83,5 +83,5 @@ void Watcher::Stop()
 
 void Watcher::CheckFile(std::string_view filePath)
 {
-    _queue->Push(new AsyncWatcherOperation(filePath, _maxFileSize));
+    _queue->Push(new AsyncWatcherOperation(filePath));
 }

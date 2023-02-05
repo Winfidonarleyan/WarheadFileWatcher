@@ -45,12 +45,13 @@ void AsyncWatcherOperation::Execute()
 
         auto fileName{ path.filename().generic_string() };
         auto fileSize{ fs::file_size(path) };
+        auto maxFileSize{ sWatcher->GetMaxFileSize() };
         auto findWord{ sWatcher->GetFindWord() };
 
         // Check file size
-        if (_maxFileSize && fileSize > _maxFileSize)
+        if (maxFileSize && fileSize > maxFileSize)
         {
-            LOG_DEBUG("watcher.finder", "Skip check file: '{}'. File size ({}) is larger than maximum ({})", fileName, fileSize, _maxFileSize);
+            LOG_DEBUG("watcher.finder", "Skip check file: '{}'. File size ({}) is larger than maximum ({})", fileName, fileSize, maxFileSize);
             return;
         }
 
