@@ -23,7 +23,7 @@ mkdir build
 cd build
 cmake ../ -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_INSTALL_PREFIX=../../wfw
 make -j 4 && make install
-cd ..
+cd ../../wfw
 ```
 
 A new folder should appear next to the repository `wfw`
