@@ -163,8 +163,8 @@ Watcher.Files.MaxSize = 1073741824
 #                           Default: 10
 #
 
-LogChannel.Console = "1","6","[%H:%M:%S] %t","lightRed lightRed red brown cyan lightMagenta green"
-LogChannel.Watcher = "2","6","[%Y-%m-%d %H:%M:%S] %t","Watcher.log"
+LogChannel.Console = "1","5","[%H:%M:%S] %t","lightRed lightRed red brown cyan lightMagenta green"
+LogChannel.Watcher = "2","5","[%Y-%m-%d %H:%M:%S] %t","Watcher.log"
 LogChannel.Finder = "2","5","[%Y-%m-%d %H:%M:%S] %t","Finder.log"
 
 #
@@ -187,6 +187,6 @@ LogChannel.Finder = "2","5","[%Y-%m-%d %H:%M:%S] %t","Finder.log"
 #                     (Using spaces as separator).
 #
 
-Logger.root = 6,Console Watcher
+Logger.root = 5,Console Watcher
 Logger.watcher.finder = 5,Console Finder
 ###################################################################################################
