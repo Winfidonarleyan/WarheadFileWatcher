@@ -37,6 +37,7 @@ void WatcherUpdateLoop();
 int main()
 {
     signal(SIGTERM, &TerminateHandler);
+    signal(SIGINT, &TerminateHandler);
     signal(SIGABRT, &Warhead::AbortHandler);
 
     auto configFile = fs::path(sConfigMgr->GetConfigPath() + std::string(_WARHEAD_WATCHER_CONFIG));
